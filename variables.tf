@@ -1,4 +1,3 @@
-
 variable "project" {
   description = "The ID of the project in which the resource belongs."
 }
@@ -39,22 +38,23 @@ variable "image_name" {
 # Compute Instance Variables
 variable "instance_name" {
   description = "(Required) A unique name for the resource, required by GCE. Changing this forces a new resource to be created."
-
   #default = "instance"
 }
 
 variable "compute_tags" {
   description = "A list of tags to attach to the instance."
-  type        = "list"
+  type        = list(string)
   default     = []
 }
+
 variable "compute_labels" {
-  type    = "map"
+  type    = map(string)
   default = {}
 }
+
 # Network Interface Variables
 variable "subnetwork_name" {
-  type = "string"
+  type        = string
   description = "Name of the subnetwork in the VPC."
 }
 
@@ -68,16 +68,16 @@ variable "type" {
   description = "The GCE disk type."
   default     = "pd-ssd"
 }
+
 variable "auto_delete" {
   description = "Whether the disk will be auto-deleted when the instance is deleted. Defaults to true"
   default     = "true"
 }
 
-
 # Service Account block
 variable "scopes" {
   description = "(Required) A list of service scopes."
-  type        = "list"
+  type        = list(string)
   default     = ["userinfo-email", "compute-ro", "storage-ro"]
 }
 
@@ -98,13 +98,14 @@ variable "preemptible" {
 }
 
 variable "metadata_startup_script" {
-    description = "The user-data script to run at first boot"
-    type = "string"
-    default = ""
+  description = "The user-data script to run at first boot"
+  type        = string
+  default     = ""
 }
 
 variable "metadata" {
   description = "A map of key/value pairs of things like user-data and ssh-keys"
-  type = "map"
-  default = {}
+  type        = map(string)
+  default     = {}
 }
+

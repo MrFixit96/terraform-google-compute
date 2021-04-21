@@ -32,7 +32,7 @@ variable "count_start" {
 
 variable "image_name" {
   description = "(Required) The name of a specific image or a family."
-  default     = "ubuntu-2004-lts"
+  default     = "ubuntu-os-cloud/ubuntu-2004-lts"
 }
 
 # Compute Instance Variables

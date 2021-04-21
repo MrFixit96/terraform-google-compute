@@ -41,7 +41,7 @@ resource "google_compute_instance" "default" {
       type  = var.type
     }
 
-    auto_delete = var.auto_delete ? 1 : 0
+    auto_delete = var.auto_delete ? true : false
   }
 
   // Local SSD disk
@@ -56,8 +56,8 @@ resource "google_compute_instance" "default" {
   }
 
   scheduling {
-    preemptible         = var.preemptible ? 1 : 0
-    automatic_restart   = var.automatic_restart ? 1 : 0
+    preemptible         = var.preemptible ? true : false
+    automatic_restart   = var.automatic_restart ? true : false
     on_host_maintenance = var.on_host_maintenance == "MIGRATE" ? "MIGRATE" : "TERMINATE"
   }
 
